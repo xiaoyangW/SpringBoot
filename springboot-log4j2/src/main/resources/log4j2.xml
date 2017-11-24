@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="OFF">
+    <properties>
+        <Property name="log_pattern">%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %M() @%L - %msg%n</Property>
+    </properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <!--<ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>-->
+            <PatternLayout pattern="${log_pattern}"/>
+        </Console>
+        <!--这个会打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
+        <RollingFile name="RollingInfoFile" fileName="log/app.log"
+                     filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %M() @%L - %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="100MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>
+
+        <!-- error 日志 -->
+        <RollingFile name="RollingErrorFile" fileName="log/error.log"
+                     filePattern="logs/$${date:yyyy-MM}/error-%d{MM-dd-yyyy}-%i.log.gz">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %M() @%L - %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="100MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>
+        <RollingFile name="zidinyi" fileName="log/zidinyi.log"
+                     filePattern="logs/$${date:yyyy-MM}/x-%d{MM-dd-yyyy}-%i.log.gz">
+            <ThresholdFilter level="INFO" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %M() @%L - %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="100MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <!--收集某类下的日志-->
+        <Logger name="com.springbootlog.Controller" level="INFO" >
+            <appender-ref ref="zidinyi"/>
+        </Logger>
+        <Root level="INFO">
+            <appender-ref ref="RollingInfoFile"/>
+            <appender-ref ref="RollingErrorFile"/>
+            <appender-ref ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
