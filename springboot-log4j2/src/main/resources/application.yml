@@ -1,0 +1,6 @@
+server:
+  port: 8089
+
+logging:
+  config: classpath:log4j2.xml
+  level: info
