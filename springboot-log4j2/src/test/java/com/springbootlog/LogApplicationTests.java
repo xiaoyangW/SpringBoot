@@ -65,8 +65,8 @@ public class LogApplicationTests {
 				.session(session)
 		)
 				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(MockMvcResultMatchers.jsonPath("$.author").value("嘟嘟MD独立博客"))
-				.andExpect(MockMvcResultMatchers.jsonPath("$.title").value("Spring Boot干货系列"))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.author").value(""))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.title").value("S"))
 				.andDo(MockMvcResultHandlers.print());
 	}
 
@@ -76,7 +76,7 @@ public class LogApplicationTests {
 	 */
 	@Test
 	public void updateLearn() throws Exception{
-		String json="{\"author\":\"测试修改\",\"id\":1031,\"title\":\"Spring Boot干货系列\",\"url\":\"http://tengj.top/\"}";
+		String json="{\"author\":\"测试修改\",\"id\":1031,\"title\":\"Spring Boot干货系列\",\"url\":\"/\"}";
 		mvc.perform(MockMvcRequestBuilders.post("/learn/update")
 				.accept(MediaType.APPLICATION_JSON_UTF8)
 				.content(json.getBytes())//传json参数
