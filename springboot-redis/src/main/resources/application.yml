@@ -4,7 +4,6 @@ server:
 spring:
   application:
     name: springbootredis
-
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/my?characterEncoding=utf-8
     driver-class-name: com.mysql.jdbc.Driver
@@ -13,4 +12,5 @@ spring:
   jpa:
     database: MySQL
     show-sql: true
+
 
