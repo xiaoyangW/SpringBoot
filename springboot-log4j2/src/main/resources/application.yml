@@ -3,4 +3,5 @@ server:
 
 logging:
   config: classpath:log4j2.xml
-  level: info
+  level[0]: info
+  #level: info //使用springboot 1.5.9的配置，当使用springboot 2.0时会报错
