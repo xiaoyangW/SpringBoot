@@ -2,8 +2,10 @@ package com.springbootlog;
 
 import java.lang.annotation.*;
 
+import static java.lang.annotation.ElementType.METHOD;
+
 @Documented
-@Target({ElementType.METHOD})
+@Target(METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UserDataLog {
     String operation() default "";
