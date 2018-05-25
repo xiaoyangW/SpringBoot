@@ -31,7 +31,7 @@
             </Policies>
             <DefaultRolloverStrategy max="20"/>
         </RollingFile>
-        <RollingFile name="zidinyi" fileName="log/zidinyi.log"
+        <RollingFile name="datalog" fileName="log/datalog.log"
                      filePattern="logs/$${date:yyyy-MM}/x-%d{MM-dd-yyyy}-%i.log.gz">
             <ThresholdFilter level="INFO" onMismatch="DENY"/>
             <PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %M() @%L - %msg%n"/>
@@ -44,8 +44,8 @@
     </Appenders>
     <Loggers>
         <!--收集某类下的日志-->
-        <Logger name="com.springbootlog.controller.Controller" level="INFO" >
-            <appender-ref ref="zidinyi"/>
+        <Logger name="com.springbootlog.controller" level="INFO" >
+            <appender-ref ref="datalog"/>
         </Logger>
         <Root level="INFO">
             <appender-ref ref="RollingInfoFile"/>

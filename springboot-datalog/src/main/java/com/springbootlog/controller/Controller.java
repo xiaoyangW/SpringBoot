@@ -1,23 +1,45 @@
 package com.springbootlog.controller;
 
+import com.springbootlog.UserDataLog;
+import com.springbootlog.dao.IUserDao;
+import com.springbootlog.dto.ResponseDto;
+import com.springbootlog.module.User;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author WXY
+ */
 @RestController
 @RequestMapping("/log")
 public class Controller {
-    private Logger logger = LogManager.getLogger(Controller.class.getName());
-    final Level X = Level.forName("X",250);
-    final Logger loggers = LogManager.getLogger();
-    @GetMapping("/test")
-    public void log(){
-        logger.info("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
-        logger.error("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-        logger.log(X, "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+    private IUserDao userDao;
+    @Autowired
+    public Controller(IUserDao userDao) {
+        this.userDao = userDao;
     }
 
+    @GetMapping("/user/{id}")
+    public ResponseDto getUser(@PathVariable("id")Integer id){
+        ResponseDto dto = new ResponseDto();
+        dto.setData(userDao.getUser(id));
+        return dto;
+    }
+
+    @PostMapping("/update")
+    public ResponseDto updateUser(@RequestBody User user){
+        ResponseDto dto = new ResponseDto();
+        dto.setCode(userDao.updateUser(user));
+        return dto;
+    }
+
+    @PostMapping("/add")
+    public ResponseDto addUser(@RequestBody User user){
+        ResponseDto dto = new ResponseDto();
+        dto.setCode(userDao.addUser(user));
+        return dto;
+    }
 }
