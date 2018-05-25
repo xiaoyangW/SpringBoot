@@ -1,10 +1,11 @@
-package com.springbootlog.service.UserServiceImpl;
+package com.springbootlog.service.Impl;
 
 import com.springbootlog.Constant;
 import com.springbootlog.UserDataLog;
 import com.springbootlog.dao.IUserDao;
 import com.springbootlog.module.User;
 import com.springbootlog.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements IUserService {
 
     private IUserDao userDao;
-
+    @Autowired
     public UserServiceImpl(IUserDao userDao) {
         this.userDao=userDao;
     }

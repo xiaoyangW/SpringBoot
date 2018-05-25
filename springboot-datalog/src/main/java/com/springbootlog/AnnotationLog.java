@@ -12,7 +12,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -68,9 +67,9 @@ public class AnnotationLog {
         logger.info("URL : " + request.getRequestURL().toString()+
                     " ,OPERATION:"+datalog.operation()+
                     " ,MSG:"+datalog.msg()+
-                    " ,RETURN_DATA:"+ret.toString()+
                     " ,ARGS : " + Arrays.toString(joinPoint.getArgs())+
-                    " ,Constant"+ Arrays.toString(constant));
+                    " ,Constant"+ Arrays.toString(constant)+
+                    " ,RETURN_DATA:"+ret.toString());
 
     }
 
