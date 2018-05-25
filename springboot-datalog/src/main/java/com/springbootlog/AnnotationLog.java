@@ -26,15 +26,13 @@ import java.util.Arrays;
 public class AnnotationLog {
 
     private Logger logger = LogManager.getLogger(Controller.class.getName());
-    //public * com.springbootlog.controller..*.*(..)
-    //
 
     @Pointcut("execution(* *(..))&&@annotation(com.springbootlog.UserDataLog)")
     public void operationLog(){}
 
     @Before("operationLog()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
-        // 接收到请求，记录请求内容
+        /*// 接收到请求，记录请求内容
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         // 记录下请求内容
@@ -47,7 +45,7 @@ public class AnnotationLog {
         Object[] parem = joinPoint.getArgs();
         String methodName = joinPoint.getSignature().getName();
         Class<?> targetClass = joinPoint.getTarget().getClass();
-
+*/
     }
 
     @AfterReturning(returning = "ret",pointcut = "operationLog()")
@@ -55,10 +53,6 @@ public class AnnotationLog {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
 
-        Object[] parem = joinPoint.getArgs();
-        for (Object x:parem) {
-            System.out.println(x.toString());
-        }
         String methodName = joinPoint.getSignature().getName();
         Class<?> targetClass = joinPoint.getTarget().getClass();
         Method method = null;
@@ -70,10 +64,13 @@ public class AnnotationLog {
         }
         assert method != null;
         UserDataLog datalog = method.getAnnotation(UserDataLog.class);
+        Constant[] constant=datalog.constant();
         logger.info("URL : " + request.getRequestURL().toString()+
                     " ,OPERATION:"+datalog.operation()+
                     " ,MSG:"+datalog.msg()+
-                    " ,RETURN_DATA:"+ret.toString());
+                    " ,RETURN_DATA:"+ret.toString()+
+                    " ,ARGS : " + Arrays.toString(joinPoint.getArgs())+
+                    " ,Constant"+ Arrays.toString(constant));
 
     }
 

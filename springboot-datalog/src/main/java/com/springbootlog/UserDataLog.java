@@ -8,4 +8,5 @@ import java.lang.annotation.*;
 public @interface UserDataLog {
     String operation() default "";
     String msg() default "";
+    Constant[] constant() default {};
 }
