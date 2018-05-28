@@ -78,8 +78,10 @@ public class AnnotationLog {
                     " ,Constant"+ Arrays.toString(constant)+
                     " ,RETURN_DATA:"+ret.toString());*/
         Object[] param = joinPoint.getArgs();
+        for (Object o : param) {
+            mongoTemplate.save(o);
+        }
 
-        mongoTemplate.save(param[0]);
     }
 
 }
