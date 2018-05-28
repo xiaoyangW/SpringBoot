@@ -8,7 +8,9 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -20,18 +22,25 @@ import java.util.Arrays;
  * @author WXY
  */
 @Aspect
-@Order(5)
 @Component
 public class AnnotationLog {
 
+
+    private MongoTemplate mongoTemplate;
+    @Autowired
+    public AnnotationLog(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
+
     private Logger logger = LogManager.getLogger(Controller.class.getName());
+    //@Pointcut("execution(* *(..))&&@annotation(com.springbootlog.UserDataLog)")
 
     @Pointcut("execution(* *(..))&&@annotation(com.springbootlog.UserDataLog)")
     public void operationLog(){}
 
     @Before("operationLog()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
-        /*// 接收到请求，记录请求内容
+        // 接收到请求，记录请求内容
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         // 记录下请求内容
@@ -44,7 +53,6 @@ public class AnnotationLog {
         Object[] parem = joinPoint.getArgs();
         String methodName = joinPoint.getSignature().getName();
         Class<?> targetClass = joinPoint.getTarget().getClass();
-*/
     }
 
     @AfterReturning(returning = "ret",pointcut = "operationLog()")
@@ -61,16 +69,17 @@ public class AnnotationLog {
                 break;
             }
         }
-        assert method != null;
         UserDataLog datalog = method.getAnnotation(UserDataLog.class);
         Constant[] constant=datalog.constant();
-        logger.info("URL : " + request.getRequestURL().toString()+
+      /*  logger.info("URL : " + request.getRequestURL().toString()+
                     " ,OPERATION:"+datalog.operation()+
                     " ,MSG:"+datalog.msg()+
                     " ,ARGS : " + Arrays.toString(joinPoint.getArgs())+
                     " ,Constant"+ Arrays.toString(constant)+
-                    " ,RETURN_DATA:"+ret.toString());
+                    " ,RETURN_DATA:"+ret.toString());*/
+        Object[] param = joinPoint.getArgs();
 
+        mongoTemplate.save(param[0]);
     }
 
 }

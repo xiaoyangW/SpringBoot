@@ -1,9 +1,11 @@
 package com.springbootlog.module;
 
+import java.io.Serializable;
+
 /**
  * @author WXY
  */
-public class User {
+public class User implements Serializable {
     private Integer id;
     private String name;
     private String phone;

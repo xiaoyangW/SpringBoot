@@ -10,3 +10,11 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/mydata?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
     username: root
     password: Wxy123456
+  data:
+    mongodb:
+      database: log
+      host: 192.168.146.134
+      port: 27017
+      username: loguser
+      password: loguser
+

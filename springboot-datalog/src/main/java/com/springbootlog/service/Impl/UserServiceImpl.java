@@ -21,19 +21,18 @@ public class UserServiceImpl implements IUserService {
     public UserServiceImpl(IUserDao userDao) {
         this.userDao=userDao;
     }
-   /* @UserDataLog(operation = "update",msg = "修改用户信息")*/
+    @UserDataLog(constant = {
+            @Constant(paramclass = "com.springbootlog.module.User")
+    })
     @Override
     public Integer updateUser(User user) {
         return userDao.updateUser(user);
     }
-    /*@UserDataLog(operation = "update",msg = "修改用户信息",constant = {
-            @Constant(name = "id",value = "用户id"),
-            @Constant(name = "name",value = "用户name"),
-            @Constant(name = "phone",value = "用户phone")
-    })*/
+
     @Override
     public Integer updateUser2(Integer id, String name, String phone) {
-        return userDao.updateUser2(id, name, phone);
+        Integer f = userDao.updateUser2(id, name, phone);
+        return f;
     }
 
 }

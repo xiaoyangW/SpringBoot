@@ -27,7 +27,6 @@ public class TwoController {
     @PostMapping("/update")
     public ResponseDto updateUser(@RequestBody User user){
         ResponseDto dto = new ResponseDto();
-        dto.setCode(userService.updateUser2(user.getId(),user.getName(),user.getPhone()));
         userService.updateUser(user);
         return dto;
     }

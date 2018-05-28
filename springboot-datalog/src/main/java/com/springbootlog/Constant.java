@@ -9,6 +9,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({})
 public @interface Constant {
+    String paramclass() default "";
     String name() default "";
     String value() default "";
 }
