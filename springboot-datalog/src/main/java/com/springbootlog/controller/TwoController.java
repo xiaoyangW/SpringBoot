@@ -1,7 +1,5 @@
 package com.springbootlog.controller;
 
-import com.springbootlog.UserDataLog;
-import com.springbootlog.dao.IUserDao;
 import com.springbootlog.dto.ResponseDto;
 import com.springbootlog.module.User;
 import com.springbootlog.service.IUserService;

@@ -52,11 +52,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.spring.boot</groupId>
-			<artifactId>datalog</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+
 		<!--<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-nosql</artifactId> &lt;!&ndash; 必需，否则报错 &ndash;&gt;

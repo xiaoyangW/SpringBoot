@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 
 
 @Documented
-@Target({ElementType.METHOD})
+@Target({ElementType.METHOD,ElementType.TYPE,ElementType.FIELD,ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UserDataLog {
     String operation() default "";

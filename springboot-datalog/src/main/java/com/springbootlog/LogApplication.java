@@ -9,7 +9,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @author WXY
  */
 @SpringBootApplication
-@EnableScheduling
 public class LogApplication {
 
 	public static void main(String[] args) {

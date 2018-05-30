@@ -1,6 +1,7 @@
 package com.springbootlog.dao;
 
 
+
 import com.springbootlog.UserDataLog;
 import com.springbootlog.module.User;
 import org.apache.ibatis.annotations.*;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
  */
 @Mapper
 @Repository
+@UserDataLog
 public interface IUserDao {
 
     @UserDataLog(operation = "insert",msg = "添加用户")
@@ -23,7 +25,7 @@ public interface IUserDao {
 
     @UserDataLog(operation = "update",msg = "修改用户")
     @Update("update mydata.user set name=#{name},phone=#{phone} where id=#{id};")
-    Integer updateUser(User user);
+    Integer updateUser(@UserDataLog() User user);
 
     @UserDataLog(operation = "update",msg = "修改用户信息")
     @Update("update mydata.user set name=#{name},phone=#{phone} where id=#{id};")

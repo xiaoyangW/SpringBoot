@@ -1,12 +1,8 @@
 package com.springbootlog.controller;
 
-import com.springbootlog.UserDataLog;
 import com.springbootlog.dao.IUserDao;
 import com.springbootlog.dto.ResponseDto;
 import com.springbootlog.module.User;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

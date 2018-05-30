@@ -1,7 +1,6 @@
 package com.springbootlog.service.Impl;
 
-import com.springbootlog.Constant;
-import com.springbootlog.UserDataLog;
+
 import com.springbootlog.dao.IUserDao;
 import com.springbootlog.module.User;
 import com.springbootlog.service.IUserService;
@@ -15,15 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl implements IUserService {
-
-    private IUserDao userDao;
     @Autowired
+    private IUserDao userDao;
+    /*@Autowired
     public UserServiceImpl(IUserDao userDao) {
         this.userDao=userDao;
-    }
-    @UserDataLog(constant = {
-            @Constant(paramclass = "com.springbootlog.module.User")
-    })
+    }*/
+    //@UserDataLog
     @Override
     public Integer updateUser(User user) {
         return userDao.updateUser(user);
