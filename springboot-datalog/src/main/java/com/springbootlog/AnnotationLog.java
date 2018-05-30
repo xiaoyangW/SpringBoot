@@ -1,6 +1,7 @@
 package com.springbootlog;
 
 import com.springbootlog.controller.Controller;
+import com.springbootlog.module.DataLog;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
@@ -34,8 +35,8 @@ public class AnnotationLog {
 
     private Logger logger = LogManager.getLogger(Controller.class.getName());
     //@Pointcut("execution(* *(..))&&@annotation(com.springbootlog.UserDataLog)")
-
-    @Pointcut("execution(* *(..))&&@annotation(com.springbootlog.UserDataLog)")
+    //public * com.springbootlog.dao..*.*(..)
+    @Pointcut("execution(public * *.*.dao..*.*(..))")
     public void operationLog(){}
 
     @Before("operationLog()")
@@ -69,18 +70,19 @@ public class AnnotationLog {
                 break;
             }
         }
-        UserDataLog datalog = method.getAnnotation(UserDataLog.class);
-        Constant[] constant=datalog.constant();
-      /*  logger.info("URL : " + request.getRequestURL().toString()+
+      /* UserDataLog datalog = method.getAnnotation(UserDataLog.class);
+      logger.info("URL : " + request.getRequestURL().toString()+
                     " ,OPERATION:"+datalog.operation()+
                     " ,MSG:"+datalog.msg()+
                     " ,ARGS : " + Arrays.toString(joinPoint.getArgs())+
                     " ,Constant"+ Arrays.toString(constant)+
                     " ,RETURN_DATA:"+ret.toString());*/
         Object[] param = joinPoint.getArgs();
-        for (Object o : param) {
-            mongoTemplate.save(o);
-        }
+        DataLog log = new DataLog();
+        log.setData(param[0]);
+        log.setDate(System.currentTimeMillis()+"");
+        log.setMethod(methodName);
+        mongoTemplate.save(log);
 
     }
 
