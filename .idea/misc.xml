@@ -13,8 +13,6 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/springboot-docker/pom.xml" />
-        <option value="$PROJECT_DIR$/springboot-webflux/pom.xml" />
       </list>
     </option>
   </component>
