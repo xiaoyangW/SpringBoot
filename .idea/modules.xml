@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/datalog/datalog.iml" filepath="$PROJECT_DIR$/datalog/datalog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot.iml" filepath="$PROJECT_DIR$/springboot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-actuator/springboot-actuator.iml" filepath="$PROJECT_DIR$/springboot-actuator/springboot-actuator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-datalog/springboot-datalog.iml" filepath="$PROJECT_DIR$/springboot-datalog/springboot-datalog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-docker/springboot-docker.iml" filepath="$PROJECT_DIR$/springboot-docker/springboot-docker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-jwt/springboot-jwt.iml" filepath="$PROJECT_DIR$/springboot-jwt/springboot-jwt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-log4j2/springboot-log4j2.iml" filepath="$PROJECT_DIR$/springboot-log4j2/springboot-log4j2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-redis/springboot-redis.iml" filepath="$PROJECT_DIR$/springboot-redis/springboot-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-webflux/springboot-webflux.iml" filepath="$PROJECT_DIR$/springboot-webflux/springboot-webflux.iml" />
+    </modules>
+  </component>
+</project>

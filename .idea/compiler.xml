@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="datalog" />
+        <module name="springboot-actuator" />
+        <module name="springboot-datalog" />
+        <module name="springboot-docker" />
+        <module name="springboot-jwt" />
+        <module name="springboot-log4j2" />
+        <module name="springboot-redis" />
+        <module name="springboot-webflux" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="datalog" target="1.7" />
+      <module name="springboot" target="1.8" />
+      <module name="springboot-actuator" target="1.8" />
+      <module name="springboot-datalog" target="1.8" />
+      <module name="springboot-docker" target="1.8" />
+      <module name="springboot-jwt" target="1.8" />
+      <module name="springboot-log4j2" target="1.8" />
+      <module name="springboot-redis" target="1.8" />
+      <module name="springboot-webflux" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
