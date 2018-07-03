@@ -44,7 +44,7 @@
     </Appenders>
     <Loggers>
         <!--收集某类下的日志-->
-        <Logger name="com.springbootlog.Controller" level="INFO" >
+        <Logger name="com.springbootlog.controller.Controller" level="INFO" >
             <appender-ref ref="zidinyi"/>
         </Logger>
         <Root level="INFO">

@@ -14,7 +14,7 @@ public class RedisApplicationTests {
 	IUserDao dao;
 	@Test
 	public void contextLoads() {
-		System.out.println(dao.findOne(3));
+
 	}
 
 }
