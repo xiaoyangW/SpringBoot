@@ -12,5 +12,11 @@ spring:
   jpa:
     database: MySQL
     show-sql: true
-
-
+  redis:
+    port: 6379
+    jedis:
+      pool:
+        max-active: 16
+        min-idle: 8
+    host: 192.168.146.128
+    password:
