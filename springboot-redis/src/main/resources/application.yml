@@ -4,14 +4,6 @@ server:
 spring:
   application:
     name: springbootredis
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/my?characterEncoding=utf-8
-    driver-class-name: com.mysql.jdbc.Driver
-    data-username: root
-    data-password: 123456
-  jpa:
-    database: MySQL
-    show-sql: true
   redis:
     port: 6379
     jedis:
@@ -20,3 +12,4 @@ spring:
         min-idle: 8
     host: 192.168.146.128
     password:
+    database: 0

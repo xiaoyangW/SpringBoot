@@ -8,7 +8,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @author wxy
  */
 @SpringBootApplication
-@EnableScheduling
 public class RedisApplication {
 
 	public static void main(String[] args) {
